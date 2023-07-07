@@ -11,6 +11,10 @@ const mouse = {
     x: window.innerWidth / 2 - 150,
     y: window.innerHeight - 180,
 };
+const audio1 = new Audio("gameover-86548.mp3");
+const audio2 = new Audio("bullet.wav");
+const audio3 = new Audio("invader.wav");
+
 
 const canvas = document.querySelector("canvas");
 canvas.width = window.innerWidth;
@@ -33,6 +37,7 @@ window.addEventListener("keydown", (e) => {
             bulletarray.push(
                 new bullets(player.x + 100, player.y, 10, 10, 10, "red")
             );
+            audio2.play();
             break;
     }
 });
@@ -256,6 +261,7 @@ function animate() {
                 explosionarray.push(
                     new Explosion(player.x, player.y, dxside, dyside, 7)
                 );
+                audio1.play();
             }
             gameOver = true;
             clearInterval(invaderTimer);
@@ -315,6 +321,7 @@ function animate() {
                     explosionarray.push(
                         new Explosion(invader.x, invader.y, dxside, dyside, 7)
                     );
+                    audio3.play();
                 }
             }
         });
