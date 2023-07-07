@@ -17,7 +17,7 @@ const audio3 = new Audio("invader.wav");
 
 
 const canvas = document.querySelector("canvas");
-canvas.width = window.innerWidth;
+canvas.width = window.innerWidth - 20;
 canvas.height = window.innerHeight;
 window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
@@ -27,10 +27,11 @@ const ct = canvas.getContext("2d");
 window.addEventListener("keydown", (e) => {
     // console.log(e.key);
     switch (e.key) {
-        case "a":
+        case "ArrowLeft":
+            window.add
             keypress.keya = true;
             break;
-        case "d":
+        case "ArrowRight":
             keypress.keyd = true;
             break;
         case " ":
@@ -44,10 +45,10 @@ window.addEventListener("keydown", (e) => {
 
 window.addEventListener("keyup", (e) => {
     switch (e.key) {
-        case "a":
+        case "ArrowLeft":
             keypress.keya = false;
             break;
-        case "d":
+        case "ArrowRight":
             keypress.keyd = false;
             break;
         case " ":
@@ -151,7 +152,7 @@ function Player() {
 
 const player = new Player();
 let invaderTimer = null;
-const maxInvaders = 2;
+const maxInvaders = 3;
 // console.log("Max" + maxInvaders);
 function startInvaderTimer() {
     let invaderSpawnInterval = 1000;
@@ -159,6 +160,8 @@ function startInvaderTimer() {
     invaderTimer = setInterval(() => {
         if (invaderarray.length < maxInvaders) {
             const randomX = Math.random() * (window.innerWidth - 150) + 75;
+            // const randomY = Math.random() * (window.innerHeight - 150) + 75;
+
             invaderarray.push(new Invader(randomX, -60, randomVelocity));
             randomVelocity += 0.8;
         }
